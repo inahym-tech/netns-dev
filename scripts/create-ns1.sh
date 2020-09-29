@@ -53,7 +53,7 @@ run ip netns exec host2-1 ip addr add 192.168.100.21/24 dev h21-ovs2
 run ip netns exec host2-2 ip addr add 192.168.100.22/24 dev h22-ovs2
 
 destroy_network () {
-    run ip netns -all del
+    run ip -all netns del
     run ovs-vsctl del-br ovs1
     run ovs-vsctl del-br ovs2
 }
