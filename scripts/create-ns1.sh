@@ -52,5 +52,18 @@ run ip netns exec host1-2 ip addr add 192.168.100.12/24 dev h12-ovs1
 run ip netns exec host2-1 ip addr add 192.168.100.21/24 dev h21-ovs2
 run ip netns exec host2-2 ip addr add 192.168.100.22/24 dev h22-ovs2
 
+destroy_network () {
+    run ip netns -all del
+    run ovs-vsctl del-br ovs1
+    run ovs-vsctl del-br ovs2
+}
+
+stop () {
+    destroy_network
+}
+
+trap stop 0 1 2 3 13 14 15
+
 status=0; $SHEL || status=$?
 exit $status
+
