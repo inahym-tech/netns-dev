@@ -1,6 +1,8 @@
 # netns-dev
 basic vlan switching for netns and openvswitch
 
+![](図1.png)
+
 # how to run
 ```
 $ vagrant up
